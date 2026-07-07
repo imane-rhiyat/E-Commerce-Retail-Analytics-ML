@@ -45,13 +45,15 @@ This project answers several important business questions:
 
 ---
 
-# 2. Project Workflow
+# 2. Data Structure
 
 This project was developed progressively as my technical skills evolved.
 
 I first built a complete business analytics pipeline using Python, SQL, MySQL, and Power BI. After completing the analytical solution, I extended the project by applying Machine Learning to perform customer segmentation using the RFM framework.
 
-```
+## End-to-End Data Pipeline
+
+```text
                 Raw Excel Dataset
                        │
                        ▼
@@ -75,9 +77,9 @@ I first built a complete business analytics pipeline using Python, SQL, MySQL, a
 
 ---
 
-## Stage 1 — Data Preparation (Python)
+### Stage 1 — Data Preparation (Python)
 
-The project began by exploring and preparing the raw Excel dataset using Python and Pandas.
+The project began by exploring and preparing the raw Excel dataset using **Python** and **Pandas**.
 
 Main tasks included:
 
@@ -92,24 +94,24 @@ Main tasks included:
   - `InvoiceMonth`
 - Exporting cleaned datasets
 
-Outputs:
+**Outputs**
 
 - `clean_sales.csv`
 - `clean_returns.csv`
 
 ---
 
-## Stage 2 — Database Design & SQL Analytics
+### Stage 2 — Database Design & SQL Analytics
 
-The cleaned datasets were imported into MySQL to create a structured analytical database.
+The cleaned datasets were imported into **MySQL** to create a structured analytical database.
 
-### Database Tables
+#### Database Tables
 
 - `sales_transactions`
 - `returns_transactions`
 - `dim_customer_profiles`
 
-### Business Analysis
+#### Business Analysis
 
 SQL was used to calculate:
 
@@ -120,7 +122,7 @@ SQL was used to calculate:
 - Customer Churn
 - Customer RFM Metrics
 
-### Data Modeling
+#### Data Modeling
 
 A customer dimension table (`dim_customer_profiles`) was created to consolidate customer-level metrics into a single analytical dataset for reporting and analysis.
 
@@ -131,9 +133,9 @@ Two analytical SQL views were also created:
 
 ---
 
-## Stage 3 — Business Intelligence (Power BI)
+### Stage 3 — Business Intelligence (Power BI)
 
-The SQL database was connected to Power BI to build an interactive executive dashboard.
+The SQL database was connected directly to **Power BI** to build an executive dashboard.
 
 The dashboard includes:
 
@@ -144,13 +146,13 @@ The dashboard includes:
 - Monthly Revenue Trends
 - Customer RFM Metrics
 
-The dashboard uses the customer dimension table together with transactional tables to provide an integrated view of business performance.
+The dashboard uses the customer dimension table together with the transactional tables to provide an integrated view of business performance.
 
 ---
 
-## Stage 4 — Customer Segmentation (Machine Learning)
+### Stage 4 — Customer Segmentation (Machine Learning)
 
-After completing the analytics pipeline, I extended the project by applying an introductory machine learning model.
+After completing the analytics pipeline, I extended the project by applying an introductory Machine Learning model.
 
 Using the cleaned sales data, I created an RFM dataset in Python by calculating:
 
@@ -161,10 +163,10 @@ Using the cleaned sales data, I created an RFM dataset in Python by calculating:
 The features were then:
 
 - Log transformed
-- Standardized using StandardScaler
-- Clustered using a 4-cluster K-Means model
+- Standardized using **StandardScaler**
+- Clustered using a **4-cluster K-Means** model
 
-This stage demonstrates how a traditional analytics workflow can be extended with machine learning to identify customer segments based on purchasing behavior.
+This stage demonstrates how a traditional analytics workflow can be extended with Machine Learning to identify customer segments based on purchasing behavior.
 
 ---
 
@@ -178,7 +180,7 @@ SQL was used to design the database, build analytical queries, create customer-l
 
 Power BI was then used to create an executive dashboard that summarizes business performance through interactive visualizations.
 
-Finally, customer segmentation was introduced using the RFM framework and K-Means clustering to demonstrate an introductory machine learning application within the same business context.
+Finally, customer segmentation was introduced using the RFM framework and K-Means clustering to demonstrate an introductory Machine Learning application within the same business context.
 
 ---
 
@@ -220,6 +222,10 @@ The segmentation can support:
 - Customer value analysis
 - Business decision-making
 
+### Customer Segmentation Results
+
+![Customer Segments](images/customer_segments.png)
+
 ---
 
 # 5. Strategic Recommendations
@@ -231,7 +237,7 @@ Based on the analysis, the following business actions are recommended:
 - Develop targeted marketing strategies for different customer segments.
 - Continue monitoring return rates to reduce revenue leakage.
 - Use the Power BI dashboard for ongoing business performance tracking.
-- Extend the project by exploring additional machine learning models for customer behavior prediction.
+- Extend the project by exploring additional Machine Learning models for customer behavior prediction.
 
 ---
 
@@ -248,7 +254,8 @@ E-Commerce-Retail-Analytics-ML/
 │   └── EcommerceDashboard.pbix
 │
 ├── images/
-│   └── dashboard_overview.png
+│   ├── dashboard_overview.png
+│   └── customer_segments.png
 │
 ├── notebooks/
 │   └── ecommerce_analytics_pipeline.ipynb
@@ -286,12 +293,20 @@ E-Commerce-Retail-Analytics-ML/
 
 ---
 
+# Dataset
+
+This project uses the **Online Retail** dataset available on Kaggle:
+
+https://www.kaggle.com/datasets/ricgomes/global-fashion-retail-stores-dataset
+
+---
+
 # Future Improvements
 
-Future enhancements for this project include:
+Potential future enhancements include:
 
-- Automating the ETL process.
-- Deploying the pipeline to a cloud environment.
+- Automating the ETL pipeline.
+- Deploying the project to a cloud environment.
 - Comparing K-Means with other clustering algorithms.
 - Developing a predictive customer churn model.
 - Publishing the dashboard through Power BI Service.

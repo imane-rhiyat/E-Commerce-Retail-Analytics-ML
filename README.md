@@ -1,8 +1,8 @@
 # E-Commerce Retail Analytics & Machine Learning
 
-An end-to-end analytics project that transforms over **540,000 e-commerce transactions** into actionable business intelligence using **Python, MySQL, SQL, Machine Learning (K-Means), and Power BI**.
+An end-to-end analytics project built using **Python, MySQL, SQL, Power BI, and Machine Learning** to transform raw e-commerce transactions into actionable business insights.
 
-The project demonstrates a complete analytics workflow—from raw transactional data to customer segmentation and executive dashboards—helping businesses better understand customer behavior, improve retention strategies, and support data-driven decision making.
+The project began as a business analytics solution focused on understanding sales performance, customer behavior, and revenue. After completing the analytical dashboard, it was extended with Machine Learning to segment customers using the RFM framework and K-Means clustering.
 
 ---
 
@@ -13,10 +13,9 @@ The project demonstrates a complete analytics workflow—from raw transactional 
 | Raw Transactions | **541,909** |
 | Customers Analyzed | **4,372** |
 | Countries | **38** |
-| Customer Segments | **4** |
-| Machine Learning Model | **K-Means Clustering** |
 | SQL Scripts | **4** |
 | Dashboard | **Power BI** |
+| Machine Learning Model | **K-Means (4 Clusters)** |
 
 ---
 
@@ -30,32 +29,33 @@ The project demonstrates a complete analytics workflow—from raw transactional 
 
 ## Business Context
 
-E-commerce businesses generate millions of transactional records, but raw data alone provides little value without proper analysis. Decision-makers need to understand customer behavior, revenue trends, and purchasing patterns to make informed strategic decisions.
+The dataset contains over half a million transactions from an international online retail company. Although the company collects large amounts of transactional data, raw records alone provide little business value without proper analysis.
+
+Management needs visibility into revenue performance, customer purchasing behavior, product returns, and long-term customer value.
 
 ## Business Problem
 
-Without customer segmentation and analytical reporting, businesses face several challenges:
+Several important business questions cannot be answered directly from raw transactional data:
 
-- Treat all customers the same regardless of their value.
-- Fail to identify customers at risk of churning.
-- Lose revenue without understanding the impact of product returns.
-- Spend marketing budgets inefficiently.
+- How much revenue is actually generated after accounting for returns?
+- Which customers purchase most frequently?
+- Which customers are becoming inactive?
+- How does revenue evolve over time?
+- Can customers be grouped according to their purchasing behavior?
 
 ## Project Objective
 
-Develop a complete analytics solution capable of:
-
-- Cleaning and preparing raw transactional data.
-- Building a structured SQL database.
-- Engineering customer-level analytical features.
-- Segmenting customers using Machine Learning.
-- Delivering interactive executive dashboards.
+Build an end-to-end analytics pipeline capable of transforming raw transaction data into meaningful business insights through data cleaning, SQL analysis, interactive dashboards, and customer segmentation.
 
 ---
 
-# 2. Data Structure
+# 2. Project Workflow
 
-## End-to-End Analytics Workflow
+Unlike many analytics projects where Machine Learning is planned from the beginning, this project evolved progressively.
+
+The initial objective was to build a complete business analytics solution. After understanding the business through SQL analysis and dashboarding, the project was extended with customer segmentation using Machine Learning.
+
+## End-to-End Workflow
 
 ```text
                 Raw Ecommerce Dataset
@@ -70,47 +70,77 @@ Develop a complete analytics solution capable of:
               MySQL Relational Database
                        │
                        ▼
-          SQL Business Analytics & RFM
-                       │
-                       ▼
-        Customer Feature Engineering
-                       │
-                       ▼
-      K-Means Customer Segmentation
+        SQL Business Analysis & Reporting
                        │
                        ▼
           Power BI Executive Dashboard
+                       │
+                       ▼
+      Customer RFM Feature Engineering
+                       │
+                       ▼
+       K-Means Customer Segmentation
 ```
 
-## Database Structure
+---
 
-| Table | Description |
-|---------|-------------|
-| sales_transactions | Stores completed customer purchases |
-| returns_transactions | Stores returned products and associated losses |
-| dim_customer_profiles | Customer-level RFM metrics and churn indicators |
+## Data Organization
 
-## Technology Stack
+### Python
 
-| Layer | Technology |
-|---------|------------|
-| Data Cleaning | Python (Pandas, NumPy) |
-| Database | MySQL |
-| Business Analytics | SQL |
-| Machine Learning | Scikit-Learn (K-Means) |
-| Visualization | Power BI |
+- Removed missing Customer IDs
+- Removed duplicate transactions
+- Cleaned sales and returns separately
+- Generated cleaned datasets
+
+### MySQL
+
+Created relational tables to store:
+
+- Sales Transactions
+- Returns Transactions
+
+SQL was then used to calculate:
+
+- Net Revenue
+- Monthly Revenue
+- Customer Churn
+- RFM Metrics
+- Customer Dimension Table
+
+### Power BI
+
+Built an interactive dashboard including:
+
+- Sales KPI
+- Revenue Trends
+- Geographic Sales Distribution
+- RFM Summary
+- Customer Overview
+
+### Machine Learning
+
+After completing the business analysis, RFM metrics were exported and used as input for Machine Learning.
+
+The workflow included:
+
+- Log Transformation
+- Feature Scaling
+- Elbow Method
+- K-Means Clustering
+- Customer Segment Identification
 
 ---
 
 # 3. Executive Summary
 
-The project transformed over half a million raw transaction records into a structured analytical model supporting business decision-making.
+The project successfully transformed more than 540,000 raw transactions into a structured analytical model.
 
-Customer purchasing behavior was quantified through **Recency**, **Frequency**, and **Monetary (RFM)** metrics engineered directly with SQL.
+Business analysis was first conducted using SQL and Power BI to understand company performance and customer activity.
 
-These features were standardized and used to train a **4-cluster K-Means model**, identifying meaningful customer groups with distinct purchasing behaviors.
+After establishing these insights, customer-level RFM features were engineered and used to build a four-cluster K-Means model capable of identifying distinct customer groups.
 
-The resulting Power BI dashboard provides stakeholders with a centralized view of revenue performance, customer activity, return losses, and geographic sales performance.
+The result is a complete analytics pipeline combining data engineering, business intelligence, and machine learning.
 
 ---
 
@@ -118,39 +148,39 @@ The resulting Power BI dashboard provides stakeholders with a centralized view o
 
 ## Revenue Analysis
 
-Business performance was evaluated using:
+SQL queries were developed to calculate:
 
-- Gross Sales
+- Gross Revenue
 - Return Losses
 - Net Revenue
 - Monthly Revenue Trends
 
-This provides a comprehensive understanding of financial performance while measuring the impact of product returns.
+These analyses reveal the financial impact of customer returns while providing a clear picture of business performance over time.
 
 ---
 
-## Customer Analytics
+## Customer Behavior
 
-Each customer was analyzed using the RFM framework:
+Customer activity was measured using the RFM framework:
 
-- **Recency** — Days since the customer's most recent purchase.
+- **Recency** — Time since the customer's latest purchase.
 - **Frequency** — Number of completed purchases.
-- **Monetary** — Total customer spending after accounting for returns.
+- **Monetary** — Total customer spending.
 
-These metrics quantify customer engagement and purchasing value.
+These metrics provide a standardized view of customer engagement and value.
 
 ---
 
-## Machine Learning Customer Segmentation
+## Customer Segmentation
 
-Following feature engineering and scaling, a **4-cluster K-Means model** grouped customers into four strategic segments:
+Using the engineered RFM dataset, K-Means clustering identified four customer groups with distinct purchasing behaviors.
 
-- Loyal Core Customers
-- VIP Customers
-- At-Risk Customers
-- Extreme Outlier Accounts
+These segments can support:
 
-These segments provide a foundation for personalized marketing, retention strategies, and customer relationship management.
+- Customer retention campaigns
+- Personalized marketing
+- Customer lifetime value analysis
+- Resource prioritization
 
 ### Customer Segmentation
 
@@ -160,13 +190,14 @@ These segments provide a foundation for personalized marketing, retention strate
 
 # 5. Strategic Recommendations
 
-Based on the analytical findings, the following business actions are recommended:
+Based on the analysis, several business opportunities emerge:
 
-- Prioritize retention campaigns for high-value customers.
-- Develop personalized marketing strategies for each customer segment.
-- Monitor increasing customer recency to detect churn risk early.
-- Continuously monitor return behavior to reduce revenue leakage.
-- Use the Power BI dashboard as an executive decision-support tool.
+- Focus retention efforts on high-value customers.
+- Monitor inactive customers before they churn.
+- Personalize marketing campaigns using customer segments.
+- Continuously monitor return rates to reduce revenue leakage.
+- Use the Power BI dashboard as a central business monitoring tool.
+- Integrate customer segmentation into future marketing strategies.
 
 ---
 
@@ -202,33 +233,20 @@ E-Commerce-Retail-Analytics-ML/
 
 ---
 
-# Project Highlights
-
-- Cleaned and processed **541,909** e-commerce transactions using Python.
-- Built a relational database and engineered customer-level analytical features using SQL.
-- Created RFM metrics for customer behavior analysis.
-- Developed a **4-cluster K-Means** customer segmentation model.
-- Designed an interactive Power BI dashboard for executive reporting.
-- Delivered an end-to-end analytics pipeline from raw data to business recommendations.
-
----
-
-# Skills Demonstrated
+# Technical Skills Demonstrated
 
 - Python
 - Pandas
 - NumPy
 - SQL
 - MySQL
+- Power BI
+- Data Cleaning
 - Feature Engineering
-- Customer Analytics
 - RFM Analysis
 - Customer Churn Analysis
+- Business Intelligence
 - K-Means Clustering
 - Scikit-Learn
-- Power BI
-- Business Intelligence
 - Data Visualization
-- End-to-End Data Analytics
-
-
+- End-to-End Analytics Pipeline

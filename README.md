@@ -1,4 +1,4 @@
-# Ecommerce Customer Analytics Pipeline
+# E-Commerce Retail Analytics & Machine Learning
 
 An end-to-end customer analytics solution built using **Python, MySQL, SQL, Machine Learning, and Power BI**.
 
@@ -145,7 +145,7 @@ Based on the analytical findings, the following actions are recommended:
 ## Repository Structure
 
 ```text
-Ecommerce-Customer-Analytics/
+E-Commerce-Retail-Analytics-ML/
 │
 ├── data/
 │   └── customer_segmented_rfm.csv

@@ -1,4 +1,4 @@
-# E-Commerce Retail Analytics & Churn Analysis
+# E-Commerce Customer Analytics & Churn Analysis
 
 An end-to-end data analytics project that transforms raw retail transaction data into actionable business insights using **Python, MySQL, SQL, Power BI, and Machine Learning**.
 
